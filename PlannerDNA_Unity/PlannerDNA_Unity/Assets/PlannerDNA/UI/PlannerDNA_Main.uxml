@@ -1,0 +1,428 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" editor-extension-mode="False">
+    <Style src="PlannerDNA.uss" />
+    <ui:VisualElement name="app-root" class="app-root" picking-mode="Ignore">
+
+        <ui:VisualElement name="header" class="header">
+            <ui:VisualElement class="brand-block">
+                <ui:VisualElement class="brand-mark" />
+                <ui:Label text="PlannerDNA" class="brand" />
+            </ui:VisualElement>
+            <ui:VisualElement class="header-scenario">
+                <ui:Label name="scenario-title" text="No challenge loaded" class="scenario-title" />
+                <ui:Label name="scenario-meta" text="" class="scenario-meta" />
+            </ui:VisualElement>
+
+            <ui:VisualElement name="journey" class="journey">
+                <ui:VisualElement name="station-explore" class="station">
+                    <ui:VisualElement class="station-dot" />
+                    <ui:Label text="Explore" class="station-label" />
+                </ui:VisualElement>
+                <ui:VisualElement name="line-1" class="station-line" />
+                <ui:VisualElement name="station-design" class="station">
+                    <ui:VisualElement class="station-dot" />
+                    <ui:Label text="Design A and B" class="station-label" />
+                </ui:VisualElement>
+                <ui:VisualElement name="line-2" class="station-line" />
+                <ui:VisualElement name="station-compare" class="station">
+                    <ui:VisualElement class="station-dot" />
+                    <ui:Label text="Compare and choose" class="station-label" />
+                </ui:VisualElement>
+                <ui:VisualElement name="line-3" class="station-line" />
+                <ui:VisualElement name="station-learn" class="station">
+                    <ui:VisualElement class="station-dot" />
+                    <ui:Label name="station-learn-label" text="Learn" class="station-label" />
+                </ui:VisualElement>
+            </ui:VisualElement>
+
+            <ui:VisualElement name="header-actions" class="header-actions">
+                <ui:Button name="btn-home" text="Home" class="header-button ghost-button" />
+                <ui:Button name="btn-save" text="Save" class="header-button ghost-button" />
+                <ui:Button name="btn-learning" text="Learning Lab" class="header-button ghost-button" />
+                <ui:Button name="btn-help" text="Help and tour" class="header-button ghost-button" />
+                <ui:Button name="btn-data" text="Settings" class="header-button ghost-button" />
+                <ui:Button name="btn-theme" text="Dark mode" class="header-button theme-button" />
+            </ui:VisualElement>
+            <ui:Label name="sync-status" text="Backend: checking" class="sync-pill sync-checking" />
+        </ui:VisualElement>
+
+        <ui:VisualElement name="body" class="body" picking-mode="Ignore">
+            <ui:ScrollView name="toolbar" class="toolbar panel">
+                <ui:Label text="Change the selected parcel" class="section-title" />
+                <ui:Label name="tool-lead" text="Click a parcel in the city first." class="panel-lead" />
+                <ui:VisualElement name="tool-buttons" class="tool-buttons" />
+                <ui:Label text="History" class="section-title section-gap" />
+                <ui:VisualElement name="history-buttons" class="history-buttons" />
+            </ui:ScrollView>
+
+            <ui:VisualElement name="viewport" class="viewport" picking-mode="Ignore">
+                <ui:VisualElement name="map-tools" class="map-tools">
+                    <ui:Toggle name="toggle-access" label="" text="Show park access" class="overlay-toggle" />
+                    <ui:VisualElement name="access-key" class="access-key hidden">
+                        <ui:VisualElement class="access-key-dot access-key-dot--ok" />
+                        <ui:Label text="within 400 m" class="access-key-text" />
+                        <ui:VisualElement class="access-key-dot access-key-dot--no" />
+                        <ui:Label text="too far" class="access-key-text" />
+                    </ui:VisualElement>
+                </ui:VisualElement>
+                <ui:VisualElement name="preview-banner" class="preview-banner hidden">
+                    <ui:Label name="preview-text" text="" class="preview-text" />
+                    <ui:Button name="btn-preview-back" text="Back to comparison" class="small-button" />
+                </ui:VisualElement>
+                <ui:Label name="hover-label" text="" class="hover-label hidden" picking-mode="Ignore" />
+                <ui:VisualElement name="legend" class="legend">
+                    <ui:VisualElement class="legend-row">
+                        <ui:VisualElement name="compass-host" class="compass-host" />
+                        <ui:VisualElement class="scale-block">
+                            <ui:VisualElement name="scale-bar" class="scale-bar" />
+                            <ui:Label name="scale-label" text="" class="scale-label" />
+                        </ui:VisualElement>
+                    </ui:VisualElement>
+                    <ui:VisualElement name="legend-items" class="legend-items" />
+                    <ui:Label text="Imaginary city: 20 x 20 parcels of 40 m" class="legend-note" />
+                </ui:VisualElement>
+                <ui:Label name="message-bar" text="" class="message-bar hidden" />
+            </ui:VisualElement>
+
+            <ui:ScrollView name="analysis" class="analysis panel">
+                <ui:VisualElement name="goal-card" class="goal-card">
+                    <ui:Label text="Your goal" class="goal-eyebrow" />
+                    <ui:Label name="mission-text" text="" class="goal-text" />
+                    <ui:Label name="feasibility-label" text="" class="feasibility" />
+                    <ui:VisualElement name="constraint-list" class="constraint-list" />
+                    <ui:Label name="mission-hint" text="" class="hint hidden" />
+                </ui:VisualElement>
+
+                <ui:Label text="Selected parcel" class="section-title section-gap" />
+                <ui:VisualElement name="selection-panel" class="selection-panel" />
+
+                <ui:Label text="How the neighbourhood is doing" class="section-title section-gap" />
+                <ui:VisualElement name="metric-cards" class="metric-cards" />
+                <ui:Button name="btn-explain" text="How are these calculated?" class="link-button" />
+                <ui:VisualElement name="explain-panel" class="explain-panel hidden" />
+
+                <ui:Label text="Learning from your choices" class="section-title section-gap" />
+                <ui:VisualElement class="learning-mini">
+                    <ui:Label name="learning-status" text="" class="body-text" />
+                    <ui:Button name="btn-open-learning" text="Open the Learning Lab" class="link-button" />
+                </ui:VisualElement>
+            </ui:ScrollView>
+        </ui:VisualElement>
+
+        <ui:VisualElement name="bottom" class="bottom">
+            <ui:VisualElement class="timeline-section">
+                <ui:VisualElement class="row">
+                    <ui:Label text="Your edits so far" class="section-title" />
+                    <ui:Label name="timeline-summary" text="" class="hint timeline-summary" />
+                </ui:VisualElement>
+                <ui:ScrollView name="timeline" mode="Horizontal" class="timeline" />
+            </ui:VisualElement>
+            <ui:VisualElement name="ab-section" class="ab-section">
+                <ui:VisualElement name="slot-a" class="ab-slot">
+                    <ui:VisualElement class="ab-slot-head">
+                        <ui:Label text="Design A" class="ab-slot-title" />
+                        <ui:Button name="btn-save-a" text="Save as A" class="ab-button" />
+                    </ui:VisualElement>
+                    <ui:Label name="alt-a-status" text="Not saved yet" class="alt-status" />
+                </ui:VisualElement>
+                <ui:VisualElement name="slot-b" class="ab-slot">
+                    <ui:VisualElement class="ab-slot-head">
+                        <ui:Label text="Design B" class="ab-slot-title" />
+                        <ui:Button name="btn-save-b" text="Save as B" class="ab-button" />
+                    </ui:VisualElement>
+                    <ui:Label name="alt-b-status" text="Not saved yet" class="alt-status" />
+                </ui:VisualElement>
+                <ui:VisualElement class="ab-compare">
+                    <ui:Button name="btn-compare" text="Compare A and B" class="primary-button" />
+                    <ui:Label name="compare-hint" text="Save both designs first" class="ab-compare-hint" />
+                </ui:VisualElement>
+            </ui:VisualElement>
+        </ui:VisualElement>
+
+        <ui:VisualElement name="home-screen" class="overlay hidden">
+            <ui:VisualElement class="card home-card">
+                <ui:VisualElement class="home-brand">
+                    <ui:VisualElement class="brand-mark" />
+                    <ui:Label text="PlannerDNA" class="home-title" />
+                </ui:VisualElement>
+                <ui:Label text="Practise a real planning trade-off on an imaginary neighbourhood, then see what your own decisions tend to prioritise." class="home-lead" />
+
+                <ui:VisualElement class="challenge-box">
+                    <ui:Label text="The challenge: The Neighbourhood Green-Space Dilemma" class="challenge-name" />
+                    <ui:Label name="home-mission" text="" class="challenge-goal" />
+                </ui:VisualElement>
+
+                <ui:VisualElement class="home-steps">
+                    <ui:VisualElement class="home-step">
+                        <ui:VisualElement class="home-step-rail">
+                            <ui:VisualElement class="home-step-dot"><ui:Label text="1" class="home-step-num" /></ui:VisualElement>
+                            <ui:VisualElement class="home-step-line" />
+                        </ui:VisualElement>
+                        <ui:Label text="Explore" class="home-step-title" />
+                        <ui:Label text="Look around the city and see which homes are far from a park." class="home-step-text" />
+                    </ui:VisualElement>
+                    <ui:VisualElement class="home-step">
+                        <ui:VisualElement class="home-step-rail">
+                            <ui:VisualElement class="home-step-dot"><ui:Label text="2" class="home-step-num" /></ui:VisualElement>
+                            <ui:VisualElement class="home-step-line" />
+                        </ui:VisualElement>
+                        <ui:Label text="Design A and B" class="home-step-title" />
+                        <ui:Label text="Change parcels to make two different plans and save each one." class="home-step-text" />
+                    </ui:VisualElement>
+                    <ui:VisualElement class="home-step">
+                        <ui:VisualElement class="home-step-rail">
+                            <ui:VisualElement class="home-step-dot"><ui:Label text="3" class="home-step-num" /></ui:VisualElement>
+                            <ui:VisualElement class="home-step-line" />
+                        </ui:VisualElement>
+                        <ui:Label text="Compare and choose" class="home-step-title" />
+                        <ui:Label text="See both plans side by side and pick the one you prefer." class="home-step-text" />
+                    </ui:VisualElement>
+                    <ui:VisualElement class="home-step">
+                        <ui:VisualElement class="home-step-rail">
+                            <ui:VisualElement class="home-step-dot"><ui:Label text="4" class="home-step-num" /></ui:VisualElement>
+                        </ui:VisualElement>
+                        <ui:Label text="Learn" class="home-step-title" />
+                        <ui:Label text="After about ten choices, see which outcomes your choices favoured." class="home-step-text" />
+                    </ui:VisualElement>
+                </ui:VisualElement>
+
+                <ui:VisualElement class="home-actions">
+                    <ui:Button name="btn-start-tour" text="Start with a guided tour" class="primary-button" />
+                    <ui:Button name="btn-new-demo" text="Start without the tour" class="secondary-button" />
+                    <ui:Button name="btn-resume" text="Resume my saved design" class="secondary-button" />
+                    <ui:VisualElement class="spacer" />
+                    <ui:Button name="btn-home-close" text="Back to my city" class="secondary-button" />
+                </ui:VisualElement>
+                <ui:Label name="home-error" text="" class="error-text hidden" />
+
+                <ui:VisualElement class="home-footer">
+                    <ui:Button name="btn-home-more" text="More options" class="ghost-button small-button" />
+                    <ui:Button name="btn-about" text="About the data" class="ghost-button small-button" />
+                    <ui:Button name="btn-home-learning" text="Learning Lab" class="ghost-button small-button" />
+                    <ui:VisualElement class="spacer" />
+                    <ui:Label name="home-stats" text="" class="hint" />
+                </ui:VisualElement>
+                <ui:VisualElement name="home-advanced" class="home-advanced hidden">
+                    <ui:Label text="Each number (seed) creates a different imaginary city. The same seed always gives the same city." class="hint" />
+                    <ui:VisualElement class="row">
+                        <ui:TextField name="seed-field" label="City seed" value="42" class="seed-field" />
+                        <ui:Button name="btn-new-seed" text="Start this city" class="secondary-button" />
+                        <ui:Button name="btn-random-seed" text="Pick a random seed" class="ghost-button" />
+                    </ui:VisualElement>
+                </ui:VisualElement>
+                <ui:Label name="about-text" text="" class="body-text about-text hidden" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+
+        <ui:VisualElement name="compare-screen" class="overlay hidden">
+            <ui:VisualElement class="card compare-card">
+                <ui:VisualElement class="card-head">
+                    <ui:Label text="Compare Design A and Design B" class="card-title" />
+                    <ui:VisualElement class="spacer" />
+                    <ui:Button name="btn-compare-close" text="Close" class="small-button" />
+                </ui:VisualElement>
+                <ui:Label name="compare-verify" text="" class="hint" />
+                <ui:Label name="compare-problems" text="" class="error-text hidden" />
+                <ui:VisualElement name="compare-table" class="compare-table" />
+                <ui:Label name="compare-tradeoffs" text="" class="body-text" />
+                <ui:Label name="compare-eligibility" text="" class="hint" />
+                <ui:VisualElement class="row">
+                    <ui:Label text="Look at them in 3D:" class="hint" />
+                    <ui:Button name="btn-preview-a" text="Show A" class="small-button" />
+                    <ui:Button name="btn-preview-b" text="Show B" class="small-button" />
+                </ui:VisualElement>
+                <ui:Label text="Which design would you choose?" class="question" />
+                <ui:VisualElement class="row">
+                    <ui:Button name="choice-a" text="A" class="choice-button" />
+                    <ui:Button name="choice-b" text="B" class="choice-button" />
+                    <ui:Button name="choice-tie" text="Tie" class="choice-button" />
+                    <ui:Button name="choice-skip" text="Skip" class="choice-button" />
+                </ui:VisualElement>
+                <ui:TextField name="reason-field" label="Why? (optional)" multiline="true" class="reason-field" />
+                <ui:VisualElement class="row">
+                    <ui:Button name="btn-confirm-choice" text="Confirm choice" class="primary-button" />
+                    <ui:Label name="compare-result" text="" class="body-text compare-result" />
+                </ui:VisualElement>
+                <ui:Label name="compare-prediction" text="" class="prediction-text hidden" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+
+        <ui:VisualElement name="learning-screen" class="overlay hidden">
+            <ui:VisualElement class="card info-card learning-card">
+                <ui:VisualElement class="card-head">
+                    <ui:Label text="Learning Lab" class="card-title" />
+                    <ui:VisualElement class="spacer" />
+                    <ui:Button name="btn-learning-refresh" text="Refresh" class="small-button" />
+                    <ui:Button name="btn-learning-close" text="Close" class="small-button" />
+                </ui:VisualElement>
+                <ui:Label name="learning-banner" text="" class="learning-banner" />
+                <ui:ScrollView name="learning-content" class="info-scroll">
+                    <ui:Label text="Your training data" class="section-title" />
+                    <ui:Label name="learning-samples" text="" class="body-text learning-strong" />
+                    <ui:Label name="learning-readiness" text="" class="hint" />
+                    <ui:Label name="learning-warning" text="" class="warning-text hidden" />
+                    <ui:VisualElement class="row">
+                        <ui:Button name="btn-train" text="Train my model" class="primary-button" />
+                        <ui:Label name="learning-train-status" text="" class="body-text compare-result" />
+                    </ui:VisualElement>
+
+                    <ui:Label text="Current model" class="section-title section-gap" />
+                    <ui:Label name="learning-model" text="" class="body-text" />
+                    <ui:VisualElement name="learning-weights" class="compare-table hidden" />
+                    <ui:Label name="learning-tradeoffs" text="" class="body-text" />
+
+                    <ui:Label text="How well it predicts (leave-one-scenario-out, not a blinded test)" class="section-title section-gap" />
+                    <ui:Label name="learning-diagnostics-note" text="" class="hint" />
+                    <ui:VisualElement name="learning-diagnostics" class="compare-table hidden" />
+
+                    <ui:Label text="Warnings and limitations" class="section-title section-gap" />
+                    <ui:Label name="learning-caveats" text="" class="hint" />
+
+                    <ui:Label text="Model history" class="section-title section-gap" />
+                    <ui:Label name="learning-history-note" text="" class="hint" />
+                    <ui:VisualElement name="learning-history" class="compare-table hidden" />
+
+                    <ui:Label text="Suggestions for the current scenario" class="section-title section-gap" />
+                    <ui:Label name="suggest-banner" text="" class="learning-banner" />
+                    <ui:VisualElement class="row">
+                        <ui:Button name="btn-suggest" text="Generate and rank candidates" class="secondary-button" />
+                        <ui:Label name="suggest-status" text="" class="hint compare-result" />
+                    </ui:VisualElement>
+                    <ui:VisualElement name="suggest-list" class="suggest-list" />
+
+                    <ui:Label text="Test your model fairly" class="section-title section-gap" />
+                    <ui:Label name="learning-eval-note" text="" class="hint" />
+                    <ui:VisualElement class="row">
+                        <ui:Button name="btn-open-evaluation" text="Open the blinded test" class="secondary-button" />
+                    </ui:VisualElement>
+                </ui:ScrollView>
+            </ui:VisualElement>
+        </ui:VisualElement>
+
+        <ui:VisualElement name="evaluation-screen" class="overlay hidden">
+            <ui:VisualElement class="card info-card learning-card">
+                <ui:VisualElement class="card-head">
+                    <ui:Label text="Blinded test of your model" class="card-title" />
+                    <ui:VisualElement class="spacer" />
+                    <ui:Button name="btn-eval-refresh" text="Refresh" class="small-button" />
+                    <ui:Button name="btn-eval-close" text="Close" class="small-button" />
+                </ui:VisualElement>
+                <ui:Label name="eval-banner" text="" class="learning-banner" />
+                <ui:ScrollView name="eval-content" class="info-scroll">
+                    <ui:Label name="eval-status" text="" class="body-text learning-strong" />
+                    <ui:Label name="eval-explain" text="" class="hint" />
+                    <ui:VisualElement name="eval-start-row" class="row">
+                        <ui:Button name="btn-eval-start-short" text="Start a short test (15 choices)" class="primary-button" />
+                        <ui:Button name="btn-eval-start-full" text="Start a full test (25 choices)" class="secondary-button" />
+                    </ui:VisualElement>
+                    <ui:Label name="eval-progress" text="" class="body-text" />
+
+                    <ui:VisualElement name="eval-pair" class="eval-pair hidden">
+                        <ui:Label name="eval-pair-title" text="" class="section-title" />
+                        <ui:Label name="eval-seal" text="" class="hint" />
+                        <ui:VisualElement name="eval-table" class="compare-table" />
+                        <ui:VisualElement class="row">
+                            <ui:Label text="Look at them in 3D:" class="hint" />
+                            <ui:Button name="btn-eval-show-left" text="Show left" class="small-button" />
+                            <ui:Button name="btn-eval-show-right" text="Show right" class="small-button" />
+                        </ui:VisualElement>
+                        <ui:Label text="Which design would you choose?" class="question" />
+                        <ui:VisualElement class="row">
+                            <ui:Button name="eval-choice-left" text="Left" class="choice-button" />
+                            <ui:Button name="eval-choice-right" text="Right" class="choice-button" />
+                            <ui:Button name="eval-choice-tie" text="Tie" class="choice-button" />
+                            <ui:Button name="eval-choice-skip" text="Skip" class="choice-button" />
+                        </ui:VisualElement>
+                        <ui:VisualElement class="row">
+                            <ui:Button name="btn-eval-confirm" text="Confirm choice" class="primary-button" />
+                            <ui:Label name="eval-result" text="" class="body-text compare-result" />
+                        </ui:VisualElement>
+                    </ui:VisualElement>
+                    <ui:Label name="eval-reveal" text="" class="prediction-text hidden" />
+                    <ui:VisualElement class="row">
+                        <ui:Button name="btn-eval-next" text="Show the next pair" class="primary-button hidden" />
+                        <ui:Button name="btn-eval-finish" text="Finish the test" class="secondary-button hidden" />
+                    </ui:VisualElement>
+
+                    <ui:Label name="eval-report-title" text="Test report" class="section-title section-gap hidden" />
+                    <ui:Label name="eval-report-summary" text="" class="body-text learning-strong" />
+                    <ui:VisualElement name="eval-report-table" class="compare-table hidden" />
+                    <ui:Label name="eval-report-notes" text="" class="hint" />
+
+                    <ui:Label text="Earlier tests" class="section-title section-gap" />
+                    <ui:Label name="eval-history-note" text="" class="hint" />
+                    <ui:VisualElement name="eval-history" class="compare-table hidden" />
+                </ui:ScrollView>
+            </ui:VisualElement>
+        </ui:VisualElement>
+
+        <ui:VisualElement name="help-screen" class="overlay hidden">
+            <ui:VisualElement class="card info-card">
+                <ui:VisualElement class="card-head">
+                    <ui:Label text="Help" class="card-title" />
+                    <ui:VisualElement class="spacer" />
+                    <ui:Button name="btn-help-close" text="Close" class="small-button" />
+                </ui:VisualElement>
+                <ui:VisualElement class="help-tour">
+                    <ui:Label text="New here? The guided tour shows you each part of the screen in about two minutes." class="help-tour-text" />
+                    <ui:Button name="btn-help-tour" text="Start the tour" class="primary-button" />
+                </ui:VisualElement>
+                <ui:ScrollView name="help-content" class="info-scroll" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+
+        <ui:VisualElement name="data-screen" class="overlay hidden">
+            <ui:VisualElement class="card info-card">
+                <ui:VisualElement class="card-head">
+                    <ui:Label text="Settings and data" class="card-title" />
+                    <ui:VisualElement class="spacer" />
+                    <ui:Button name="btn-data-close" text="Close" class="small-button" />
+                </ui:VisualElement>
+                <ui:ScrollView name="data-content" class="info-scroll" />
+                <ui:VisualElement class="row">
+                    <ui:Button name="btn-load" text="Load my saved design" class="secondary-button" />
+                    <ui:Button name="btn-open-folder" text="Open local data folder" class="secondary-button" />
+                </ui:VisualElement>
+            </ui:VisualElement>
+        </ui:VisualElement>
+
+        <ui:VisualElement name="delete-screen" class="overlay hidden">
+            <ui:VisualElement class="card delete-card">
+                <ui:Label text="Delete all PlannerDNA data" class="card-title" />
+                <ui:Label name="delete-warning" text="" class="body-text" />
+                <ui:Toggle name="delete-backup" label="Make a backup first (recommended)" value="true" class="delete-option" />
+                <ui:Toggle name="delete-backend" label="Also delete the local backend database" value="false" class="delete-option" />
+                <ui:TextField name="delete-confirm-field" label="Type DELETE to confirm" class="delete-confirm-field" />
+                <ui:Label name="delete-result" text="" class="error-text hidden" />
+                <ui:VisualElement class="row home-row">
+                    <ui:Button name="btn-delete-confirm" text="Delete permanently" class="danger-button" />
+                    <ui:Button name="btn-delete-cancel" text="Cancel" class="secondary-button" />
+                </ui:VisualElement>
+            </ui:VisualElement>
+        </ui:VisualElement>
+
+        <ui:VisualElement name="tour-layer" class="tour-layer hidden" picking-mode="Ignore">
+            <ui:VisualElement name="tour-dim-top" class="tour-dim" />
+            <ui:VisualElement name="tour-dim-bottom" class="tour-dim" />
+            <ui:VisualElement name="tour-dim-left" class="tour-dim" />
+            <ui:VisualElement name="tour-dim-right" class="tour-dim" />
+            <ui:VisualElement name="tour-ring" class="tour-ring" picking-mode="Ignore" />
+            <ui:VisualElement name="tour-card" class="tour-card">
+                <ui:VisualElement name="tour-progress" class="tour-progress" />
+                <ui:Label name="tour-count" text="" class="tour-count" />
+                <ui:Label name="tour-title" text="" class="tour-title" />
+                <ui:Label name="tour-body" text="" class="tour-body" />
+                <ui:VisualElement name="tour-task" class="tour-task hidden">
+                    <ui:VisualElement class="tour-task-dot" />
+                    <ui:Label name="tour-task-text" text="" class="tour-task-text" />
+                </ui:VisualElement>
+                <ui:VisualElement class="tour-actions">
+                    <ui:Button name="btn-tour-end" text="End tour" class="ghost-button small-button" />
+                    <ui:VisualElement class="spacer" />
+                    <ui:Button name="btn-tour-back" text="Back" class="secondary-button" />
+                    <ui:Button name="btn-tour-next" text="Next" class="primary-button" />
+                </ui:VisualElement>
+            </ui:VisualElement>
+        </ui:VisualElement>
+
+    </ui:VisualElement>
+</ui:UXML>

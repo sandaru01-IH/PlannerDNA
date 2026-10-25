@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f3fc276d6fb343249acf5210668b1da2, type: 3}
+  m_Name: PlannerDNA_MaterialPalette
+  m_EditorClassIdentifier: PlannerDNA.Runtime::PlannerDNA.Rendering.MaterialPalette
+  ground: {fileID: 2100000, guid: 114eb1f3eefa26f449a26063e8620645, type: 2}
+  road: {fileID: 2100000, guid: 18b820d32b8cf7348a186dfd3a5ac222, type: 2}
+  lot: {fileID: 2100000, guid: d69bf9a1c5b48fc449aef1c5f64ceae6, type: 2}
+  residential: {fileID: 2100000, guid: 1d494769359719d4d9c9cca251014a9c, type: 2}
+  residentialBand: {fileID: 2100000, guid: d317a03adecd06d4188d6a9e563f59c2, type: 2}
+  commercial: {fileID: 2100000, guid: 186236adc7f06ed44911c92373e13ca1, type: 2}
+  commercialBand: {fileID: 2100000, guid: ec7cd7cd60adaaa4198017ee370bd8ed, type: 2}
+  park: {fileID: 2100000, guid: 70d112e4c8b3f35469037f00446209ff, type: 2}
+  treeCrown: {fileID: 2100000, guid: e9c442af604e2f3408320d65599d10c1, type: 2}
+  treeTrunk: {fileID: 2100000, guid: 8ade8fc98a697824cbc51ad0b2078ef3, type: 2}
+  vacant: {fileID: 2100000, guid: 3a3cb3cb8da4a9145bad117639493dda, type: 2}
+  civic: {fileID: 2100000, guid: ad83f49badc7c7d48a41d083a6d5faca, type: 2}
+  civicBand: {fileID: 2100000, guid: abe1239139689a0479ca1a910262b89c, type: 2}
+  selection: {fileID: 2100000, guid: 8bd3ca3c2f519064f9f9b537f8b3d354, type: 2}
+  hover: {fileID: 2100000, guid: 6d1ad06c5d273b4428daf90c8c736169, type: 2}
+  changed: {fileID: 2100000, guid: b85a65d6fed6809409074130009edb7f, type: 2}
+  accessOk: {fileID: 2100000, guid: caf1419f692f8c948be5c77eea84c3bd, type: 2}
+  accessNo: {fileID: 2100000, guid: bab0961afa0b544478892989288bf22c, type: 2}
