@@ -1,0 +1,27 @@
+cff-version: 1.2.0
+message: "If you use or refer to this software, please cite it as below."
+title: "PlannerDNA: Learning and Blind-Testing Personal Pairwise Preference Models in a Local-First 3D Urban-Design Sandbox"
+type: software
+authors:
+  - given-names: Alpha
+    alias: sandaru01-IH
+    affiliation: Independent Researcher
+version: 1.0.0
+date-released: 2026-10-25
+repository-code: "https://github.com/sandaru01-IH/PlannerDNA"
+abstract: >-
+  PlannerDNA is a local-first Unity 6 urban-design sandbox in which a participant designs two
+  alternative plans for a procedurally generated neighbourhood and explicitly chooses between them.
+  A FastAPI and SQLite backend re-verifies every design, fits an interpretable pairwise logistic
+  (Bradley-Terry) model on five baseline-relative features with bootstrap uncertainty and
+  leave-one-scenario-out diagnostics, and evaluates the frozen model with a pre-registered,
+  blinded protocol using SHA-256 sealed predictions on unseen cities.
+keywords:
+  - urban planning
+  - preference learning
+  - pairwise comparison
+  - Bradley-Terry model
+  - blinded evaluation
+  - Unity
+  - FastAPI
+  - serious games
