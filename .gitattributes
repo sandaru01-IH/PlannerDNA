@@ -1,0 +1,27 @@
+* text=auto
+
+*.cs     text diff=csharp
+*.py     text diff=python
+*.md     text
+*.uxml   text
+*.uss    text
+*.tss    text
+*.json   text
+*.yml    text
+*.unity  text merge=unityyamlmerge eol=lf
+*.prefab text merge=unityyamlmerge eol=lf
+*.asset  text merge=unityyamlmerge eol=lf
+*.meta   text merge=unityyamlmerge eol=lf
+*.mat    text merge=unityyamlmerge eol=lf
+
+*.png  binary
+*.jpg  binary
+*.jpeg binary
+*.gif  binary
+*.mp4  binary
+*.mp3  binary
+*.pdf  binary
+*.docx binary
+*.ttf  binary
+*.otf  binary
+*.db   binary

@@ -1,0 +1,60 @@
+# ---- Unity (project lives in PlannerDNA_Unity/PlannerDNA_Unity) ----
+# Keep Assets/ (including .meta files), Packages/manifest.json, packages-lock.json and ProjectSettings/.
+PlannerDNA_Unity/PlannerDNA_Unity/[Ll]ibrary/
+PlannerDNA_Unity/PlannerDNA_Unity/[Tt]emp/
+PlannerDNA_Unity/PlannerDNA_Unity/[Ll]ogs/
+PlannerDNA_Unity/PlannerDNA_Unity/[Oo]bj/
+PlannerDNA_Unity/PlannerDNA_Unity/[Bb]uild/
+PlannerDNA_Unity/PlannerDNA_Unity/[Bb]uilds/
+PlannerDNA_Unity/PlannerDNA_Unity/[Uu]ser[Ss]ettings/
+PlannerDNA_Unity/PlannerDNA_Unity/[Mm]emoryCaptures/
+PlannerDNA_Unity/PlannerDNA_Unity/[Rr]ecordings/
+PlannerDNA_Unity/PlannerDNA_Unity/.vs/
+PlannerDNA_Unity/PlannerDNA_Unity/.vscode/
+PlannerDNA_Unity/PlannerDNA_Unity/*.csproj
+PlannerDNA_Unity/PlannerDNA_Unity/*.sln
+PlannerDNA_Unity/PlannerDNA_Unity/*.slnx
+PlannerDNA_Unity/PlannerDNA_Unity/*.suo
+PlannerDNA_Unity/PlannerDNA_Unity/*.user
+PlannerDNA_Unity/PlannerDNA_Unity/*.pidb
+PlannerDNA_Unity/PlannerDNA_Unity/*.booproj
+PlannerDNA_Unity/PlannerDNA_Unity/*.unityproj
+PlannerDNA_Unity/PlannerDNA_Unity/sysinfo.txt
+PlannerDNA_Unity/PlannerDNA_Unity/crashlytics-build.properties
+*.apk
+*.aab
+*.unitypackage
+
+# ---- Python backend ----
+backend/.venv/
+**/__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# ---- Personal data, models, secrets (never commit) ----
+*.db
+*.sqlite
+*.sqlite3
+backend/data/
+backend/models/
+*.joblib
+*.pkl
+.env
+.env.*
+!.env.example
+
+# ---- Local test output, environments and private copies ----
+TestResults/
+.media-venv/
+backups/
+/figures/
+deliverables/voice.mp3
+PlannerDNA_Unity_Learning_and_Cursor_Kit/
+
+# ---- OS / editor noise ----
+~$*
+.DS_Store
+Thumbs.db
+.idea/
