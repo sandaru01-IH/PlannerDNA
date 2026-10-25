@@ -1,0 +1,3 @@
+# Optional: only for tools/make_figures.py (figures from a research export). The backend does not need it.
+-r requirements.txt
+matplotlib==3.10.9
