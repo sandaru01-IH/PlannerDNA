@@ -134,7 +134,7 @@ PlannerDNA turns that into a short, repeatable exercise:
 ## 🔁 How it works
 
 ```mermaid
-flowchart LR
+flowchart TD
     H([🏠 Home]) --> T[🧭 Guided tour]
     T --> E[🏙️ Explore city<br/>seeded 20×20]
     E --> A[🅰️ Design A]
@@ -223,22 +223,22 @@ Full formulas and the cost table: [`docs/scenario-and-metrics.md`](docs/scenario
 A **pairwise logistic regression** in the Bradley–Terry family. With $f(\cdot)$ the five-feature
 vector and $w$ the learned weights:
 
-$$
+```math
 P(A \succ B) \;=\; \sigma\!\big(w^{\top}\,[\,f(A) - f(B)\,]\big), \qquad \sigma(z) = \frac{1}{1 + e^{-z}}
-$$
+```
 
-Each choice is added twice, once mirrored, so that
+Each choice is added twice, once mirrored, so that screen position cannot be learned:
 
-$$
-P(A \succ B) + P(B \succ A) = 1 \quad\text{and screen position cannot be learned.}
-$$
+```math
+P(A \succ B) + P(B \succ A) = 1
+```
 
 The weights minimise the L2-penalised log loss over the $2n$ mirrored rows, with no intercept and
 features scaled by their root-mean-square (no centring):
 
-$$
+```math
 \hat w \;=\; \arg\min_w \; \frac{1}{2C}\lVert w\rVert_2^2 \;-\; \sum_{i=1}^{2n} \Big[\, y_i \log \sigma(w^{\top}x_i) + (1-y_i)\log\big(1-\sigma(w^{\top}x_i)\big) \Big], \qquad C = 1
-$$
+```
 
 | Setting | Value |
 |---|---|
@@ -288,7 +288,8 @@ sequenceDiagram
 ```
 
 <p align="center">
-  <img src="deliverables/paper_assets/diagram_protocol.png" alt="Blinded protocol" width="70%">
+  <img src="deliverables/paper_assets/diagram_protocol.png" alt="Blinded protocol" width="70%"><br>
+  <sub>The full message-level protocol as drawn in the technical paper, including the secret seeds and the training lock.</sub>
 </p>
 
 | Safeguard | Purpose |
