@@ -1,0 +1,10 @@
+# Document and media tooling (tools/make_paper.py, tools/make_linkedin_pdf.py, video helpers).
+# Not needed by the backend or the Unity project.
+reportlab
+matplotlib
+numpy
+pillow
+python-docx
+pypdf
+pypdfium2
+imageio-ffmpeg
