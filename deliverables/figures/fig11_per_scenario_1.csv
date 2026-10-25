@@ -1,0 +1,4 @@
+scenario_id,seed,scored,correct,accuracy,ties,skips,unanswered
+green-233996936,233996936,4,4.0,1.0,0,0,0
+green-191840508,191840508,4,4.0,1.0,0,0,0
+green-441751837,441751837,4,4.0,1.0,0,0,0

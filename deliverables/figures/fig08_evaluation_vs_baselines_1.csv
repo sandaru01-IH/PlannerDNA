@@ -1,0 +1,7 @@
+predictor,label,n,accuracy,accuracy_ci_low,accuracy_ci_high,brier,log_loss,has_log_loss
+model,Frozen model pm-20261025T114017Z-f8497a43,12,1.0,1.0,1.0,0.06286546324426341,0.22391185498672853,True
+chance,Chance (always 50 %),12,0.5,0.5,0.5,0.25,0.6931471805599453,True
+cheaper,Always the cheaper design,12,0.2916666666666667,0.25,0.375,0.6875,0.0,False
+more_access,Always the design with more park access,12,1.0,1.0,1.0,0.0,0.0,False
+equal_weight,Equal-weight sum of the five features,12,0.4166666666666667,0.25,0.5,0.5833333333333334,0.0,False
+left_position,Always the design shown on the left,12,0.75,0.5,1.0,0.25,0.0,False

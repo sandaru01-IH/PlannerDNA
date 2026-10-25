@@ -1,0 +1,6 @@
+baseline,label,model_minus_baseline_accuracy,ci_low,ci_high
+chance,Chance (always 50 %),0.5,0.5,0.5
+cheaper,Always the cheaper design,0.7083333333333333,0.625,0.75
+more_access,Always the design with more park access,0.0,0.0,0.0
+equal_weight,Equal-weight sum of the five features,0.5833333333333333,0.5,0.75
+left_position,Always the design shown on the left,0.25,0.0,0.5

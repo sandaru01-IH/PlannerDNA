@@ -1,0 +1,9 @@
+scenario_id,chose_a,chose_b,total
+green-123,1,4,5
+green-2024,4,1,5
+green-42,5,5,10
+green-7,2,3,5
+green-777,4,1,5
+excluded: Tie or skip,,,3
+excluded: Evaluation (blinded),,,30
+excluded: Infeasible pair,,,1

@@ -1,0 +1,6 @@
+predictor,label,n,accuracy,brier,log_loss,has_log_loss
+model,Your model (scenario held out),30,0.9666666666666667,0.06923322975975955,0.2407942577338319,True
+chance,Chance (always 50 %),30,0.5,0.25,0.693147180559945,True
+cheaper,Always the cheaper design,30,0.36666666666666664,0.5833333333333334,0.0,False
+more_access,Always the design with more park access,30,0.9666666666666667,0.03333333333333333,0.0,False
+equal_weight,Equal-weight sum of the five features,30,0.5,0.5,0.0,False

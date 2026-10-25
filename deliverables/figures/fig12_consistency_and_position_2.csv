@@ -1,0 +1,3 @@
+measure,count,of,rate,ci_low,ci_high,note
+repeat_agreement,2,3,0.6666666666666666,0.2076596008020477,0.9385080552796037,"Wilson score interval, 95%"
+chose_left,7,12,0.5833333333333334,,,binomial p = 0.7744

@@ -1,0 +1,6 @@
+feature,label,weight_standardised,interval_low,interval_high,interval_level,sign_agreement,weight_raw,direction,varied
+delta_access_fraction,Park access,2.690209917383271,2.128658347380665,2.9255978818382404,0.9,1.0,18.141195217650626,positive,True
+delta_housing_fraction,Housing capacity,-0.6005570685112406,-1.168704765416464,-0.05043793551318122,0.9,0.95,-83.78707866764383,negative,True
+delta_park_share_fraction,Park share of land,0.09816205673918516,-0.4309942340410273,1.0959428972841898,0.9,0.63,16.97455940220139,negligible,True
+negative_budget_fraction,Low spending,-0.7924460587932419,-0.9899175347180227,-0.4760608540367627,0.9,1.0,-3.036436963969653,negative,True
+negative_lost_housing_fraction,Keeping original housing,0.4651036304828343,-0.17636588184703933,0.9690725982725816,0.9,0.87,92.55641493372744,positive,True

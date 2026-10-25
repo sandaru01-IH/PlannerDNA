@@ -1,0 +1,284 @@
+{
+  "script_version": "figures-1.0.0",
+  "generated_utc": "2026-10-25T11:58:49.495999+00:00",
+  "source": "http://127.0.0.1:8765/api/v1/export",
+  "export_manifest": {
+    "format": "plannerdna-research-export",
+    "format_version": 1,
+    "db_schema_version": 3,
+    "metric_version": "metrics-1.0.0",
+    "cost_rules_version": "cost-rules-1.0.0",
+    "feature_version": "features-v1",
+    "exported_utc": "2026-10-25T11:58:44.044183+00:00",
+    "counts": {
+      "scenarios": 11,
+      "sessions": 19,
+      "events": 307,
+      "alternatives": 106,
+      "comparisons": 61,
+      "model_runs": 1,
+      "predictions": 30,
+      "evaluation_plans": 2,
+      "evaluation_trials": 30
+    },
+    "notes": [
+      "All data is synthetic and was produced on this computer; nothing was uploaded.",
+      "Each alternative's snapshot_json reproduces the city; metrics can be recomputed from it with the rules above.",
+      "model_runs lists every fitted preference model with its training comparison ids, hyperparameters, seed, package versions and diagnostics; the model files themselves are in the backend's data/models folder.",
+      "Model weights are statistical associations with explicit choices, not motives or values.",
+      "evaluation_plans are pre-registered blinded evaluations (frozen model, unseen scenarios); a closed plan carries its report. Predictions of trials still awaiting a choice are redacted (sealed)."
+    ]
+  },
+  "synthetic_label_comparisons": 35,
+  "all_comparisons": 61,
+  "label_note": "Comparisons whose reason mentions 'synthetic' were produced by a fixed test rule, not by a person; figures built from them carry a SYNTHETIC TEST LABELS watermark.",
+  "model_version": "pm-20261025T114017Z-f8497a43",
+  "reproducibility_check": {
+    "model_version": "pm-20261025T114017Z-f8497a43",
+    "checked": true,
+    "comparisons": 30,
+    "max_abs_weight_difference": 0.0,
+    "reproduced": true,
+    "note": "Refit from the exported comparisons with the same pairwise module and default hyperparameters."
+  },
+  "closed_evaluations": [
+    {
+      "plan_id": "eval-920dc2e479f64814ab59ae0518e6d4b0",
+      "report_sha256_note": "verify via GET /api/v1/evaluation/plans/{id}/report",
+      "scored": 12
+    },
+    {
+      "plan_id": "eval-11f5b0d7657a45d0b4b62cf05e9c6b26",
+      "report_sha256_note": "verify via GET /api/v1/evaluation/plans/{id}/report",
+      "scored": 9
+    }
+  ],
+  "figures": [
+    {
+      "id": "fig01_training_data",
+      "title": "Training data per scenario",
+      "files": [
+        "fig01_training_data.png",
+        "fig01_training_data.svg",
+        "fig01_training_data.pdf"
+      ],
+      "data": "fig01_training_data.csv",
+      "caption": "Training-eligible comparisons (explicit A/B choices between two feasible designs, train mode) per synthetic scenario: 30 comparisons across 5 scenarios. Right: stored decisions excluded from training (tie or skip: 3, evaluation (blinded): 30, infeasible pair: 1).",
+      "detail": "n = 30 comparisons"
+    },
+    {
+      "id": "fig02_tradeoff_space",
+      "title": "Trade-offs in the choices",
+      "files": [
+        "fig02_tradeoff_space.png",
+        "fig02_tradeoff_space.svg",
+        "fig02_tradeoff_space.pdf"
+      ],
+      "data": "fig02_tradeoff_space.csv",
+      "caption": "Each point is one training comparison, oriented as the chosen design minus the rejected one. Points right of zero chose more park access. In 14 comparison(s) more access was chosen at the cost of housing capacity; in 0 housing was chosen at the cost of access.",
+      "detail": "n = 30 comparisons"
+    },
+    {
+      "id": "fig03_coefficients",
+      "title": "Fitted weights with uncertainty",
+      "files": [
+        "fig03_coefficients.png",
+        "fig03_coefficients.svg",
+        "fig03_coefficients.pdf"
+      ],
+      "data": "fig03_coefficients.csv",
+      "caption": "Standardised weights of the pairwise logistic model pm-20261025T114017Z-f8497a43 (trained on 30 comparisons across 5 scenarios) with 90% percentile intervals from 200 scenario-bootstrap refits. Grey: interval includes zero or feature never varied. Weights are associations with explicit choices, not motives.",
+      "detail": "model pm-20261025T114017Z-f8497a43, n = 30"
+    },
+    {
+      "id": "fig04_bootstrap_draws",
+      "title": "Bootstrap distribution of weights",
+      "files": [
+        "fig04_bootstrap_draws.png",
+        "fig04_bootstrap_draws.svg",
+        "fig04_bootstrap_draws.pdf"
+      ],
+      "data": "fig04_bootstrap_draws.csv",
+      "caption": "Distribution of standardised weights over 200 refits on scenario-resampled training data (seed 20261025, recomputed from the export with the backend's pairwise module). Diamonds: fit on all 30 comparisons. Wide or zero-straddling violins mean the direction is uncertain.",
+      "detail": "model pm-20261025T114017Z-f8497a43, 200 resamples"
+    },
+    {
+      "id": "fig05_loso_vs_baselines",
+      "title": "Cross-validated diagnostic versus baselines",
+      "files": [
+        "fig05_loso_vs_baselines.png",
+        "fig05_loso_vs_baselines.svg",
+        "fig05_loso_vs_baselines.pdf"
+      ],
+      "data": "fig05_loso_vs_baselines.csv",
+      "caption": "Leave-one-scenario-out cross-validation inside the training data (5 folds, n = 30): the model scored accuracy 96.7%, Brier 0.069, log loss 0.241. Dashed lines: chance reference values (50%, 0.25, 0.693). Rule baselines are deterministic, so they have no log loss. This is a diagnostic, not the blinded evaluation.",
+      "detail": "model pm-20261025T114017Z-f8497a43, n = 30"
+    },
+    {
+      "id": "fig07_learning_curve",
+      "title": "Learning curve",
+      "files": [
+        "fig07_learning_curve.png",
+        "fig07_learning_curve.svg",
+        "fig07_learning_curve.pdf"
+      ],
+      "data": "fig07_learning_curve.csv",
+      "caption": "Leave-one-scenario-out accuracy when the model is fitted on only the first n training comparisons (recomputed from the export, n = 12 to 30), compared with fixed rules. Early points rest on few scenarios and are noisy.",
+      "detail": "30 comparisons"
+    },
+    {
+      "id": "fig08_evaluation_vs_baselines_1",
+      "title": "Blinded evaluation versus baselines",
+      "files": [
+        "fig08_evaluation_vs_baselines_1.png",
+        "fig08_evaluation_vs_baselines_1.svg",
+        "fig08_evaluation_vs_baselines_1.pdf"
+      ],
+      "data": "fig08_evaluation_vs_baselines_1.csv",
+      "caption": "The frozen model pm-20261025T114017Z-f8497a43 predicted 12 of 12 held-out choices (100.0%) across 3 unseen scenario(s); 95% scenario-bootstrap interval 100.0% to 100.0%. Chance: 50.0%. Best simple rule: always the design with more park access 100.0%. Error bars: 95% scenario-clustered bootstrap intervals (1000 resamples) where at least three scenarios were scored. Predictions were sealed before each choice; evaluation choices were never used for training.",
+      "detail": "plan eval-920dc2e479f64814ab59ae0518e6d4b0, n = 12"
+    },
+    {
+      "id": "fig09_model_minus_baselines_1",
+      "title": "Model minus baselines",
+      "files": [
+        "fig09_model_minus_baselines_1.png",
+        "fig09_model_minus_baselines_1.svg",
+        "fig09_model_minus_baselines_1.pdf"
+      ],
+      "data": "fig09_model_minus_baselines_1.csv",
+      "caption": "Paired accuracy difference between the frozen model and each baseline on the same held-out choices, with 95% scenario-clustered bootstrap intervals (when available). Intervals crossing zero mean no detectable difference.",
+      "detail": "plan eval-920dc2e479f64814ab59ae0518e6d4b0, n = 12"
+    },
+    {
+      "id": "fig10_calibration_1",
+      "title": "Calibration of sealed predictions",
+      "files": [
+        "fig10_calibration_1.png",
+        "fig10_calibration_1.svg",
+        "fig10_calibration_1.pdf"
+      ],
+      "data": "fig10_calibration_1.csv",
+      "caption": "Reliability diagram for 12 scored held-out choices: sealed probability of the favoured design (x) against how often that design was chosen (y). Expected calibration error 0.179. Few choices per bin make this noisy.",
+      "detail": "plan eval-920dc2e479f64814ab59ae0518e6d4b0, n = 12"
+    },
+    {
+      "id": "fig11_per_scenario_1",
+      "title": "Per-scenario held-out accuracy",
+      "files": [
+        "fig11_per_scenario_1.png",
+        "fig11_per_scenario_1.svg",
+        "fig11_per_scenario_1.pdf"
+      ],
+      "data": "fig11_per_scenario_1.csv",
+      "caption": "Accuracy of the frozen model's sealed predictions within each unseen evaluation scenario (labels: correct / scored). Variation between scenarios is why intervals resample whole scenarios.",
+      "detail": "plan eval-920dc2e479f64814ab59ae0518e6d4b0"
+    },
+    {
+      "id": "fig12_consistency_and_position_1",
+      "title": "Choice consistency and position effect",
+      "files": [
+        "fig12_consistency_and_position_1.png",
+        "fig12_consistency_and_position_1.svg",
+        "fig12_consistency_and_position_1.pdf"
+      ],
+      "data": "fig12_consistency_and_position_1.csv",
+      "caption": "Left: of 3 pairs shown again later with sides swapped, the same design was chosen 3 time(s) (Wilson score interval, 95%: [43.9%, 100.0%]). Right: the left-hand design was chosen in 10 of 15 choices; the dashed line is an even split. Inconsistent choices cap any model's accuracy.",
+      "detail": "plan eval-920dc2e479f64814ab59ae0518e6d4b0"
+    },
+    {
+      "id": "fig13_sealed_predictions_1",
+      "title": "Sealed predictions trial by trial",
+      "files": [
+        "fig13_sealed_predictions_1.png",
+        "fig13_sealed_predictions_1.svg",
+        "fig13_sealed_predictions_1.pdf"
+      ],
+      "data": "fig13_sealed_predictions_1.csv",
+      "caption": "Probability the frozen model had sealed for the design that was then chosen, per trial. Above the dashed line the prediction matched (green); below it did not (orange); grey: tie or skip. Repeats (squares) are not scored.",
+      "detail": "plan eval-920dc2e479f64814ab59ae0518e6d4b0, 15 answered trials"
+    },
+    {
+      "id": "fig08_evaluation_vs_baselines_2",
+      "title": "Blinded evaluation versus baselines",
+      "files": [
+        "fig08_evaluation_vs_baselines_2.png",
+        "fig08_evaluation_vs_baselines_2.svg",
+        "fig08_evaluation_vs_baselines_2.pdf"
+      ],
+      "data": "fig08_evaluation_vs_baselines_2.csv",
+      "caption": "The frozen model pm-20261025T114017Z-f8497a43 predicted 8 of 9 held-out choices (88.9%) across 3 unseen scenario(s); 95% scenario-bootstrap interval 50.0% to 100.0%. Chance: 50.0%. Best simple rule: always the design with more park access 88.9%. Error bars: 95% scenario-clustered bootstrap intervals (1000 resamples) where at least three scenarios were scored. Predictions were sealed before each choice; evaluation choices were never used for training.",
+      "detail": "plan eval-11f5b0d7657a45d0b4b62cf05e9c6b26, n = 9"
+    },
+    {
+      "id": "fig09_model_minus_baselines_2",
+      "title": "Model minus baselines",
+      "files": [
+        "fig09_model_minus_baselines_2.png",
+        "fig09_model_minus_baselines_2.svg",
+        "fig09_model_minus_baselines_2.pdf"
+      ],
+      "data": "fig09_model_minus_baselines_2.csv",
+      "caption": "Paired accuracy difference between the frozen model and each baseline on the same held-out choices, with 95% scenario-clustered bootstrap intervals (when available). Intervals crossing zero mean no detectable difference.",
+      "detail": "plan eval-11f5b0d7657a45d0b4b62cf05e9c6b26, n = 9"
+    },
+    {
+      "id": "fig10_calibration_2",
+      "title": "Calibration of sealed predictions",
+      "files": [
+        "fig10_calibration_2.png",
+        "fig10_calibration_2.svg",
+        "fig10_calibration_2.pdf"
+      ],
+      "data": "fig10_calibration_2.csv",
+      "caption": "Reliability diagram for 9 scored held-out choices: sealed probability of the favoured design (x) against how often that design was chosen (y). Expected calibration error 0.088. Few choices per bin make this noisy.",
+      "detail": "plan eval-11f5b0d7657a45d0b4b62cf05e9c6b26, n = 9"
+    },
+    {
+      "id": "fig11_per_scenario_2",
+      "title": "Per-scenario held-out accuracy",
+      "files": [
+        "fig11_per_scenario_2.png",
+        "fig11_per_scenario_2.svg",
+        "fig11_per_scenario_2.pdf"
+      ],
+      "data": "fig11_per_scenario_2.csv",
+      "caption": "Accuracy of the frozen model's sealed predictions within each unseen evaluation scenario (labels: correct / scored). Variation between scenarios is why intervals resample whole scenarios.",
+      "detail": "plan eval-11f5b0d7657a45d0b4b62cf05e9c6b26"
+    },
+    {
+      "id": "fig12_consistency_and_position_2",
+      "title": "Choice consistency and position effect",
+      "files": [
+        "fig12_consistency_and_position_2.png",
+        "fig12_consistency_and_position_2.svg",
+        "fig12_consistency_and_position_2.pdf"
+      ],
+      "data": "fig12_consistency_and_position_2.csv",
+      "caption": "Left: of 3 pairs shown again later with sides swapped, the same design was chosen 2 time(s) (Wilson score interval, 95%: [20.8%, 93.9%]). Right: the left-hand design was chosen in 7 of 12 choices; the dashed line is an even split. Inconsistent choices cap any model's accuracy.",
+      "detail": "plan eval-11f5b0d7657a45d0b4b62cf05e9c6b26"
+    },
+    {
+      "id": "fig13_sealed_predictions_2",
+      "title": "Sealed predictions trial by trial",
+      "files": [
+        "fig13_sealed_predictions_2.png",
+        "fig13_sealed_predictions_2.svg",
+        "fig13_sealed_predictions_2.pdf"
+      ],
+      "data": "fig13_sealed_predictions_2.csv",
+      "caption": "Probability the frozen model had sealed for the design that was then chosen, per trial. Above the dashed line the prediction matched (green); below it did not (orange); grey: tie or skip. Repeats (squares) are not scored.",
+      "detail": "plan eval-11f5b0d7657a45d0b4b62cf05e9c6b26, 15 answered trials"
+    }
+  ],
+  "skipped": [
+    {
+      "id": "fig06_model_history",
+      "reason": "Needs at least two trained model versions (export has 1)."
+    }
+  ],
+  "packages": {
+    "matplotlib": "3.10.9",
+    "numpy": "2.2.1"
+  }
+}
