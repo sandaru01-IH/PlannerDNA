@@ -3,9 +3,9 @@ message: "If you use or refer to this software, please cite it as below."
 title: "PlannerDNA: Learning and Blind-Testing Personal Pairwise Preference Models in a Local-First 3D Urban-Design Sandbox"
 type: software
 authors:
-  - given-names: Alpha
+  - given-names: w.s.s.silva
     alias: sandaru01-IH
-    affiliation: Independent Researcher
+    affiliation: Researcher
 version: 1.0.0
 date-released: 2026-10-25
 repository-code: "https://github.com/sandaru01-IH/PlannerDNA"
